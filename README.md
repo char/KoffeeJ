@@ -18,9 +18,7 @@ import java.io.PrintStream;
 
 public class MyAssemblyGenerator {
     public static InsnList createHelloWorld() {
-        return BytecodeAssembly.assembleBlock(insns -> new InstructionAssembly() {
-            @Override public InsnList l() { return insns; }
-
+        return BytecodeAssembly.assembleBlock(insns -> new InstructionAssembly(insns) {
             @Override
             public void asm() {
                 getstatic(System.class, "out", PrintStream.class);
